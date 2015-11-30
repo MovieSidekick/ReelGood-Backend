@@ -37,3 +37,12 @@ class RegistrationsController < ApplicationController
   end
 
 end
+
+
+
+#     while User.exists?(auth_token: token)
+#       token = SecureRandom.hex
+#     end
+#     token
+#   end
+# end
