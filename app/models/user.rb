@@ -25,4 +25,3 @@ class User < ActiveRecord::Base
   token
 end
 
-end
