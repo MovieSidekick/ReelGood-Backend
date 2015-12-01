@@ -19,11 +19,10 @@ class User < ActiveRecord::Base
     token = SecureRandom.hex
   end
 
-    while User.exists?(auth_token: token)
-      token = SecureRandom.hex
-    end
-    token
+  while User.exists?(auth_token: token)
+    token = SecureRandom.hex
   end
+  token
+end
 
-
-
+end
