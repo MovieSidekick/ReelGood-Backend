@@ -16,12 +16,11 @@ class User < ActiveRecord::Base
   end
 
   def self.generate_token
-    token = SecureRandom.hex
+      token = SecureRandom.hex
+      while User.exists?(auth_token: token)
+      token = SecureRandom.hex
+    end
+    token
   end
-
-  while User.exists?(auth_token: token)
-    token = SecureRandom.hex
-  end
-  token
 end
 
