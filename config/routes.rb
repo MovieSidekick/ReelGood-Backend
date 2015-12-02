@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   delete "/signup", to: "registrations#delete"
   post "/login", to: "registrations#login"
 
+  resources :movies
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
