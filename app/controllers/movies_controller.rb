@@ -2,10 +2,12 @@ class MoviesController < ApplicationController
 
   def index
     @movies = Movie.all
+    render "index.json.jbuilder", status: :accepted
   end
 
   def show
     @movie = Movie.find(params[:id])
+    render "show.json.jbuilder", status: :accepted
   end
 
 
@@ -46,24 +48,22 @@ class MoviesController < ApplicationController
 
   end
 
-  def edit
-    @movie = Movie.find(params[:id])
-  end
-
   def update
     @movie = Movie.find(params[:id])
     if @movie.update_attributes(update_params)
-      flash[:success] = "Movie updated!"
-      redirect_to @movie
+      render "show.json.jbuilder", status: :accepted
     else
-      render 'edit'
+      render json: { error: "Unable to edit."},
+      status: :unauthorized
     end
   end
 
   def destroy
     Movie.destroy(params[:id])
-    flash[:success] = "Movie deleted."
-    redirect_to movies_url
+    render json: {success: "Movie Deleted Successfully"}
+  else
+    render json: { error: "Unable to delte movie." },
+           status: :unauthorized
   end
 
   private
@@ -80,3 +80,7 @@ class MoviesController < ApplicationController
   end
 
 end
+
+# def edit
+#   @movie = Movie.find(params[:id])
+# end
