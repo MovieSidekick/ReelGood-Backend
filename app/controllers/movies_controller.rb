@@ -10,42 +10,29 @@ class MoviesController < ApplicationController
     render "show.json.jbuilder", status: :accepted
   end
 
-
-  def new
-    @movie = Movie.new
-  end
-
   def create
     case movie_params[:type]
-      when 'Title only'
+      when 'title'
         movie_hash = OMDB.title(movie_params[:title])           #Movie by title only
-      when 'Title and year'
+      when 'title-year'
         movie_hash = OMDB.title(movie_params[:title], year: movie_params[:year])   # movie by title and year
-      when 'IMDB ID'
+      when 'id'
         movie_hash = OMDB.id(movie_params[:imdb_id])
       else
         movie_hash[:response] = false
     end
 
-    @movie = Movie.new
-    if movie_hash[:response]  == 'True'
-      if Movie.find_by(imdb_id: movie_hash[:imdb_id])         #Check if this movie is already in our DB.
-        flash[:info] = 'Movie already exists.'
-        redirect_to Movie.find_by(imdb_id: movie_hash[:imdb_id])
+    if movie_hash[:response]
+      @movie = Movie.find_by(imdb_id: movie_hash[:imdb_id])
+      @movie = Movie.new(movie_hash.except(:response, :metasocore, :imdb_votes)) unless @movie
+      if @movie.save
+        render "create.json.jbuilder"               # Render errors
       else
-        @movie = Movie.new(movie_hash.except(:response, :metascore, :imdb_votes))   #Except for fields we don't use.
-        if @movie.save
-          flash[:success] = "Movie added!"
-          redirect_to @movie
-        else
-          render 'new'                  # Render errors
-        end
+        render "validation_error_thing"
       end
     else
-      flash.now[:error] = "Could not find movie."
-      render 'new'
+      render "search_failure_thing"
     end
-
   end
 
   def update
