@@ -28,30 +28,31 @@ class MoviesController < ApplicationController
       if @movie.save
         render "create.json.jbuilder"               # Render errors
       else
-        render "validation_error_thing"
+        render json: { errors: @movie.errors.full_messages},
+               status: :unprocessable_entity
       end
     else
       render "search_failure_thing"
     end
   end
 
-  def update
-    @movie = Movie.find(params[:id])
-    if @movie.update_attributes(update_params)
-      render "show.json.jbuilder", status: :accepted
-    else
-      render json: { error: "Unable to edit."},
-      status: :unauthorized
-    end
-  end
-
-  def destroy
-    Movie.destroy(params[:id])
-    render json: {success: "Movie Deleted Successfully"}
-  else
-    render json: { error: "Unable to delte movie." },
-           status: :unauthorized
-  end
+  # def update
+  #   @movie = Movie.find(params[:id])
+  #   if @movie.update_attributes(update_params)
+  #     render "show.json.jbuilder", status: :accepted
+  #   else
+  #     render json: { error: "Unable to edit."},
+  #     status: :unauthorized
+  #   end
+  # end
+  #
+  # def destroy
+  #   Movie.destroy(params[:id])
+  #   render json: {success: "Movie Deleted Successfully"}
+  # else
+  #   render json: { error: "Unable to delte movie." },
+  #          status: :unauthorized
+  # end
 
   private
 
