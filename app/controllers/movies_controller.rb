@@ -19,12 +19,15 @@ class MoviesController < ApplicationController
       when 'id'
         movie_hash = OMDB.id(movie_params[:imdb_id])
       else
-        movie_hash[:response] = false
+        movie_hash = { response: false, error: "No such search type - #{movie_params[:type]}" }
     end
+
+    binding.pry
 
     if movie_hash[:response]
       @movie = Movie.find_by(imdb_id: movie_hash[:imdb_id])
-      @movie = Movie.new(movie_hash.except(:response, :metasocore, :imdb_votes)) unless @movie
+      @movie = Movie.new(movie_hash.except(:response, :metascore, :imdb_votes, :runtime)) unless @movie
+      binding.pry
       if @movie.save
         render "create.json.jbuilder"               # Render errors
       else
@@ -32,8 +35,10 @@ class MoviesController < ApplicationController
                status: :unprocessable_entity
       end
     else
-      render "search_failure_thing"
+       render json: { error: movie_hash[:error] },
+              status: :unprocessable_entity
     end
+
   end
 
   # def update
@@ -56,19 +61,25 @@ class MoviesController < ApplicationController
 
   private
 
+
   def movie_params
-    params.require(:movie).permit(:type, :title, :year, :imdb_id)
+    params.permit(:type, :title, :year, :imdb_id)
   end
 
-  def update_params
-    params.require(:movie).permit(:title, :year, :rated,
-                                  :released, :runtime, :genre, :director, :writer,
-                                  :actors, :plot, :language, :country, :awards,
-                                  :poster, :imdb_rating, :imdb_id, :type)
-  end
+  # def update_params
+  #   params.require(:movie).permit(:title, :year, :rated,
+  #                                 :released, :runtime, :genre, :director, :writer,
+  #                                 :actors, :plot, :language, :country, :awards,
+  #                                 :poster, :imdb_rating, :imdb_id, :type)
+  # end
 
 end
 
 # def edit
 #   @movie = Movie.find(params[:id])
+# end
+
+
+# def movie_params
+#   params.require(:movie).permit(:type, :title, :year, :imdb_id)
 # end

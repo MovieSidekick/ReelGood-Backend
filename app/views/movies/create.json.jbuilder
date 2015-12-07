@@ -1,5 +1,6 @@
 
 json.movie do
+  binding.pry
   json.title @movie.title
   json.year @movie.year
   json.rated @movie.rated
@@ -7,7 +8,7 @@ json.movie do
   json.genre @movie.genre
   json.director @movie.director
   json.writer @movie.writer
-  json.actor @movie.actor
+  json.actor @movie.actors
   json.plot @movie.plot
   json.language @movie.language
   json.country @movie.country
