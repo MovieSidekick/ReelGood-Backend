@@ -21,8 +21,7 @@ class MoviesController < ApplicationController
       else
         movie_hash = { response: false, error: "No such search type - #{movie_params[:type]}" }
     end
-
-    binding.pry
+    
 
     if movie_hash[:response]
       @movie = Movie.find_by(imdb_id: movie_hash[:imdb_id])

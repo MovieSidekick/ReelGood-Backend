@@ -1,6 +1,5 @@
 
 json.movie do
-  binding.pry
   json.title @movie.title
   json.year @movie.year
   json.rated @movie.rated
