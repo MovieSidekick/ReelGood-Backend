@@ -6,7 +6,7 @@ json.movie @movies do |movie|
   json.genre movie.genre
   json.director movie.director
   json.writer movie.writer
-  json.actor movie.actor
+  json.actor movie.actors
   json.plot movie.plot
   json.language movie.language
   json.country movie.country

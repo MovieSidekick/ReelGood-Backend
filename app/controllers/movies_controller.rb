@@ -21,12 +21,11 @@ class MoviesController < ApplicationController
       else
         movie_hash = { response: false, error: "No such search type - #{movie_params[:type]}" }
     end
-    
+
 
     if movie_hash[:response]
       @movie = Movie.find_by(imdb_id: movie_hash[:imdb_id])
       @movie = Movie.new(movie_hash.except(:response, :metascore, :imdb_votes, :runtime)) unless @movie
-      binding.pry
       if @movie.save
         render "create.json.jbuilder"               # Render errors
       else
