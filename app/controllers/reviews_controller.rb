@@ -3,6 +3,7 @@ class ReviewsController < ApplicationController
 
   def create
     # movie = Movie.find(params[:movie_id])
+    current_user.reviews.create(body: params[:body], movie_id: params[:movie_id])
     @review = Review.create(body: params[:body])
     if @review.save
       render "create.json.jbuilder", status: :created

@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   validates_format_of :email, with: /.+@.+\..+/
   validates :auth_token, presence: true, uniqueness: true
 
-  has_many :comments
+  has_many :reviews
+  has_many :movies, through: :reviews
 
   def ensure_auth_token!
     if self.auth_token.blank?
