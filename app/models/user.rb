@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
+  include Amistad::FriendModel
 
   before_validation :ensure_auth_token!
   validates_presence_of :user_name
