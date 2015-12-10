@@ -18,6 +18,7 @@ json.movie do
   json.metascore @movie.metascore
   json.imdbvotes @movie.imdbvotes
   json.type @movie.type
+  json.id @movie.id
 end
 
 
