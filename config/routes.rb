@@ -10,6 +10,8 @@ Rails.application.routes.draw do
 
   resources :reviews, only: [:create, :show, :index, :update, :destroy], controller: "reviews"
 
+  post "/movies/:id/reviews", to: "reviews#index_movie"
+
   resources :friends, :controller => 'friendships', :except => [:show, :edit] do
     get "requests", :on => :collection
     get "invites", :on => :collection

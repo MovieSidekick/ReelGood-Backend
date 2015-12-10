@@ -2,9 +2,10 @@ class ReviewsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def create
-    # movie = Movie.find(params[:movie_id])
-    current_user.reviews.create(body: params[:body], movie_id: params[:movie_id])
-    @review = Review.create(body: params[:body])
+    @movie = Movie.find(params[:movie_id])
+    @review = @movie.reviews.create(user_id: current_user.id, body: params[:body])
+    # @review = current_user.reviews.create(body: params[:body], movie_id: params[:movie_id])
+    # @review = Review.create(body: params[:body])
     if @review.save
       render "create.json.jbuilder", status: :created
 
@@ -22,6 +23,12 @@ class ReviewsController < ApplicationController
   def index
     @reviews = current_user.reviews
     render "index.json.jbuilder", status: :ok
+  end
+
+  def index_movie
+    @movie = Movie.find(params[:id])
+    @reviews = @movie.reviews
+    render "index_movie.json.jbuilder", status: :ok
 
   end
 
