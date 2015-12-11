@@ -41,10 +41,7 @@
 
 #### To Create a Movie
 #### POST `"/movies"`
-###### Params: `type:` this can either be title or title and year.
-                `title:` this is the title of the film we are searching for.
-                Also in the headers you need to give the `auth_token:`
-                this is your authentication token.
+###### Params: `type:` this can either be title or title and year.`title:` this is the title of the film we are searching for.Also in the headers you need to give the `auth_token:`this is your authentication token.
 
 ####### JSON:
 ```json
