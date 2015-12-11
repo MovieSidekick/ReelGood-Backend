@@ -62,12 +62,23 @@
 
 #### To Show a Movie
 #### GET `"/movies/:id"`
-###### Params: in the url after /movies/1 <-- Specify the movie_id you are looking for, this should return office space.
+###### Params: in the url after /movies/1 <-- Specify the movie_id you are looking for,
+               this should return office space.
 
 ####### JSON:
 ```json
-    {"movie":{"title":"Office Space","year":1999,"rated":"R","released":"19 Feb 1999","genre":"Comedy","director":"Mike Judge","writer":"Mike Judge (Milton animated shorts), Mike Judge (screenplay)","actor":"Ron Livingston, Jennifer Aniston, David Herman, Ajay Naidu","plot":"Three company workers who hate their jobs decide to rebel against their greedy boss.","language":"English","country":"USA","awards":"2 nominations.","poster":"http://ia.media-imdb.com/images/M/MV5BOTA5MzQ3MzI1NV5BMl5BanBnXkFtZTgwNTcxNTYxMTE@._V1_SX300.jpg","imdb_rating":"7.8","imdb_id":"tt0151804","metascore":null,"imdbvotes":null,"type":"movie","id":1}}
-    ```
+{
+    {
+    "movie":
+    {"title":"Office Space","year":1999,"rated":"R","released":"19 Feb 1999","genre":"Comedy",
+    "director":"Mike Judge","writer":"Mike Judge (Milton animated shorts), Mike Judge (screenplay)",
+    "actor":"Ron Livingston, Jennifer Aniston, David Herman, Ajay Naidu",
+    "plot":"Three company workers who hate their jobs decide to rebel against their greedy boss.",
+    "language":"English","country":"USA","awards":"2 nominations.",
+    "poster":"http://ia.media-imdb.com/images/M/MV5BOTA5MzQ3MzI1NV5BMl5BanBnXkFtZTgwNTcxNTYxMTE@._V1_SX300.jpg",
+    "imdb_rating":"7.8","imdb_id":"tt0151804","metascore":null,"imdbvotes":null,"type":"movie","id":1}}
+    }
+```
 
 #### To Index Movies
 #### GET `"/movies"`
