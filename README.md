@@ -59,8 +59,7 @@
 
 #### To Show a Movie
 #### GET `"/movies/:id"`
-###### Params: in the url after /movies/1 <-- Specify the movie_id you are looking for,
-               this should return office space.
+###### Params: in the url after /movies/1 <-- Specify the movie_id you are looking for,this should return office space.
 
 ####### JSON:
 ```json
