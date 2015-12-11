@@ -23,11 +23,13 @@
 
 ####### JSON:
 ```json
+{
  {
  "user": {
    "email": "america@usa.com",
    "auth_token": "026dd9a8da91a044d46951c5df8ebeed"
  }
+}
 }
 ```
 
@@ -39,12 +41,24 @@
 
 #### To Create a Movie
 #### POST `"/movies"`
-###### Params: `type:` this can either be title or title and year. `title:` this is the title of the film we are searching for.  Also in the headers you need to give the `auth_token:` this is your authentication token.
+###### Params: `type:` this can either be title or title and year.
+                `title:` this is the title of the film we are searching for.
+                Also in the headers you need to give the `auth_token:`
+                this is your authentication token.
 
 ####### JSON:
 ```json
-    {"movie":{"title":"Return of the Jedi","year":1983,"rated":"N/A","released":"25 May 1983","genre":"Action, Adventure, Sci-Fi","director":"N/A","writer":"N/A","actor":"N/A","plot":"With the rise of the empire shaking the galaxy at its core, the rebels are driven deep into hiding. The rebels risk all with one last strike. Is it redemption for the freedom of the galaxy ...","language":"English","country":"USA","awards":"N/A","poster":"N/A","imdb_rating":"8.2","imdb_id":"tt2301123","metascore":null,"imdbvotes":null,"type":"game","id":2}}
-    ```
+    {
+    "movie":{
+    "title":"Return of the Jedi","year":1983,"rated":"N/A","released":"25 May 1983",
+    "genre":"Action, Adventure, Sci-Fi","director":"N/A","writer":"N/A","actor":"N/A",
+    "plot":"With the rise of the empire shaking the galaxy at its core, the rebels are driven deep into hiding.
+    The rebels risk all with one last strike. Is it redemption for the freedom of the galaxy ...",
+    "language":"English","country":"USA","awards":"N/A","poster":"N/A","imdb_rating":"8.2","imdb_id":"tt2301123",
+    "metascore":null,"imdbvotes":null,"type":"game","id":2
+    }
+   }
+```
 
 #### To Show a Movie
 #### GET `"/movies/:id"`
