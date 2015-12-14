@@ -79,3 +79,51 @@
 #### To Index Movies
 #### GET `"/movies"`
 ######  Params: there are no params the /movies returns all of the available movies stored in our database.
+
+### REVIEW ROUTES
+
+#### To Create a Review
+#### POST `"/reviews"`
+###### Params: `movie_id:` this is the id of the film.  `body:` this is the content of the review.
+
+####### JSON:
+```json
+    {
+    {
+      "user": {
+        "body": "This movie is the definition of all the things!",
+        "user_id": 22,
+        "movie_id": 1
+      }
+    }
+    }
+```
+#### To Show a Review
+#### GET `"/reviews/:id"`
+###### Params: in the url after /reviews/1 <--- your specified review number there.
+
+####### JSON:
+```json
+{
+    {
+      "review": {
+        "body": "yes!",
+        "movie_id": 1
+      }
+    }
+}
+```
+
+#### To Index a User's Reviews
+#### GET`"/reviews"`
+###### Params: You have to pass your account's auth_token in the headers, auth_token: 9837839424873427834
+
+####### JSON:
+```json
+{
+    {"review":[{"body":"This movie is the definition of all the things!",
+    "movie_id":1,"user_id":22},{"body":"This movie is the definition of all the things!",
+    "movie_id":1,"user_id":22},{"body":"This movie is the definition of all the things!",
+    "movie_id":1,"user_id":22}]}
+}
+```
