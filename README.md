@@ -127,3 +127,47 @@
     "movie_id":1,"user_id":22}]}
 }
 ```
+
+#### To Show all the Reviews for a Movie
+#### POST `"/movies/:id/reviews"`
+###### Params: `movie_id:` the id of the film 1 is office space, this is the same as listed in the url /:id would be /movies/1/reviews.  Also pass the auth_token in the header.
+
+####### JSON:
+```json
+{
+{
+  "review": [
+    {
+      "body": "This movie made me laugh, cry, and feel every emotion.",
+      "movie_id": 1,
+      "user_id": 13
+    },
+    {
+      "body": "yes!",
+      "movie_id": 1,
+      "user_id": 4
+    },
+    {
+      "body": "yes!",
+      "movie_id": 1,
+      "user_id": 4
+    },
+    {
+      "body": "This movie is the definition of all the things!",
+      "movie_id": 1,
+      "user_id": 22
+    },
+    {
+      "body": "This movie is the definition of all the things!",
+      "movie_id": 1,
+      "user_id": 22
+    },
+    {
+      "body": "This movie is the definition of all the things!",
+      "movie_id": 1,
+      "user_id": 22
+    }
+  ]
+}
+}
+```
